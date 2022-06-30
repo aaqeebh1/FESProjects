@@ -6,6 +6,12 @@
   margin: 0;
   box-sizing: border-box;
 }
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+}
 
 html {
   scroll-behavior: smooth;
@@ -601,4 +607,140 @@ nav {
   flex-direction: row;
   align-items: stretch;
   justify-content: space-between;
+}
+
+.pricing__column {
+  margin: 64px 32px 0 0;
+  width: 100%;
+  max-width: 384px;
+  text-align: center;
+  padding: 8px 32px 0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.pricing__column--box {
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: linear-gradient(
+    115deg,
+    rgb(56, 178, 172) 0%,
+    rgb(129, 230, 217) 100%
+  );
+  background-image: linear-gradient(
+    115deg,
+    rgb(56, 178, 172) 0%,
+    rgb(129, 230, 217) 100%
+  );
+  height: 8px;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  position: absolute;
+}
+
+.top__box {
+  line-height: 1.625em;
+  padding: 32px 0;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.625em;
+}
+
+.pricing {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 4px 0;
+  line-height: 1.625em;
+}
+
+.duration {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.625em;
+}
+
+.middle__box {
+  padding: 32px;
+  margin: 0 -32px;
+  border-bottom-width: 2px;
+  border-top-width: 2px;
+  border-color: #e5e7eb63;
+}
+
+.price-feature {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.price-feature__title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.white-text {
+  color: #fff;
+}
+
+.pricing-middle__column {
+  background-color: #6415ff;
+  background-image: linear-gradient(
+    135deg,
+    rgb(76, 81, 191) 0%,
+    rgb(102, 126, 234) 100%
+  );
+}
+
+.bottom__box {
+  padding: 32px 64px;
+}
+
+.btn__buy-now--left {
+  background: linear-gradient(
+    115deg,
+    rgb(56, 178, 172) 0%,
+    rgb(129, 230, 217) 100%
+  );
+  border-radius: 9999px;
+  padding: 16px 32px;
+  color: #fff;
+  transition: all 300ms ease;
+  font-weight: 700;
+}
+.btn__buy-now--middle {
+  background: #fff;
+  border-radius: 9999px;
+  padding: 16px 32px;
+  color: #6415ff;
+  font-weight: 700;
+  transition: all 300ms ease;
+}
+.btn__buy-now--right {
+  background: linear-gradient(
+    115deg,
+    rgb(245, 101, 101) 0%,
+    rgb(254, 178, 178) 100%
+  );
+  border-radius: 9999px;
+  padding: 16px 32px;
+  color: #fff;
+  font-weight: 700;
+  transition: all 300ms ease;
+}
+
+.btn__buy-now--left:hover,
+.btn__buy-now--middle:hover,
+.btn__buy-now--right:hover {
+  transform: translate(1px, -1px);
+  box-shadow: -9px 7px 30px -10px rgba(0, 0, 0, 0.41);
+  opacity: 0.8;
 }
