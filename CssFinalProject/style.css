@@ -61,6 +61,7 @@ nav {
   display: flex;
   align-items: center;
 }
+
 .nav__link {
   margin: 0 24px;
   padding: 0 0 4px;
@@ -1158,4 +1159,35 @@ nav {
 }
 .copyright__socials3 {
   color: #fff;
+}
+
+/* Sections transitions */
+
+.transition__left {
+  animation: transitionInLeft 650ms backwards;
+}
+
+.transition__right {
+  animation: transitionInRight 650ms backwards;
+}
+
+@keyframes transitionInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-1000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes transitionInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(1000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
