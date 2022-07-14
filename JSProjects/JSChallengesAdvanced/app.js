@@ -42,6 +42,34 @@
 //   ])
 // );
 
-//  question 4 
+//  question 4
 
-// watched 2 async videos
+// watched 3 async videos
+
+// question 5
+
+// async function postsByUser(userId) {
+//   const promise = await fetch("https://jsonplaceholder.typicode.com/posts");
+//   const result = await promise.json();
+
+//   const posts = result.filter((elem) => elem.userId === userId);
+
+//   console.log(posts);
+// }
+
+// postsByUser();
+
+// question 6
+
+// async function firstSixIncomplete(n) {
+//     const todos = await fetch("https://jsonplaceholder.typicode.com/todos");
+//     const result = await todos.json()
+//     let incompletedTodos = result.filter((elem) => !elem.completed).slice(0, 6)
+
+// this makes it dynamic able to change first 6 to any amount
+// let firstSix = incompletedTodos.slice(0, n)
+// console.log(incompletedTodos)
+
+// }
+
+//     console.log(firstSixIncomplete(6))
