@@ -77,31 +77,6 @@ a {
   left: 0;
 }
 
-nav,
-.flex,
-#languages,
-#projects
-{
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 600ms 800ms, visibility 600ms 800ms;
-}
-
-.modal__open nav,
-.modal__open .flex,
-.modal__open #languages,
-.modal__open #projects,
-.modal__open footer {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 400ms, visibility 400ms;
-  
-}
-
-.modal__open #about {
-  height: 100vh;
-}
-
 #about {
   height: 100vh;
 }
@@ -126,12 +101,13 @@ section:nth-child(even) {
   background-color: #f8f8f8;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   background-color: #242424;
   color: #fff;
   outline: none;
-  border: 3px solid #C0C4CC;
+  border: 3px solid #c0c4cc;
   border-left: none;
   border-top: none;
   border-right: none;
@@ -156,7 +132,7 @@ textarea {
   color: #fff;
 }
 
-label{
+label {
   font-size: 14px;
   font-weight: 600;
 }
@@ -169,16 +145,22 @@ label{
 }
 
 .dark-mode a,
+.dark-mode .language__name,
 .dark-mode .about-me__info--title,
 .dark-mode .about-me__info--para,
-.dark-mode .section__title{
+.dark-mode .section__title {
   color: #fff;
 }
 
-.dark-mode section{
-  background-color: #242424;
+
+.dark-mode .scroll__icon,
+.dark-mode .scroll__icon:after {
+  border: 2px solid #fff;
 }
 
+.dark-mode section {
+  background-color: #242424;
+}
 
 /*Navigation Bar*/
 
@@ -220,8 +202,6 @@ nav {
   margin: 0 12px;
   font-weight: 700;
 }
-
-
 
 /* About me*/
 
@@ -343,6 +323,56 @@ nav {
   }
 }
 
+.mail__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  font-size: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: #242424;
+  color: #fff;
+  position: fixed;
+  bottom: 32px;
+  right: 40px;
+  z-index: 100;
+}
+
+.scroll {
+  position: absolute;
+  bottom: 20px;
+}
+
+.scroll__icon {
+  width: 20px;
+  height: 30px;
+  border: 2px solid #242424;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll__icon:after {
+  content: "";
+  width: 4px;
+  height: 6px;
+  background-color: #242424;
+  border-radius: 2px;
+  animation: scroll 1000ms infinite alternate-reverse;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(-3px);
+  }
+}
+
 /* Modal section */
 
 .modal {
@@ -362,12 +392,10 @@ nav {
 }
 
 .modal__open .modal {
-  z-index: 60;  
+  z-index: 60;
   box-shadow: 0 20px 80px 0 rgb(0, 0, 0, 0.55);
   visibility: visible;
 }
-
-
 
 .modal__half {
   width: 50%;
@@ -380,52 +408,51 @@ nav {
 }
 
 .modal__open .modal__about,
-.modal__open .modal__contact{
+.modal__open .modal__contact {
   transform: translate(0%);
 }
 
-
 .modal__about {
   background-color: #f5f5f5;
-  transform: translateX(-100%)
+  transform: translateX(-100%);
 }
 
 .modal__contact {
-  background-color: #242424;  
+  background-color: #242424;
   color: #fff;
-  transform: translateX(110%)
+  transform: translateX(110%);
 }
 
-.modal__title{
+.modal__title {
   font-size: 26px;
   text-align: left;
 }
 
-.modal__subtitle{
+.modal__subtitle {
   font-size: 14px;
   margin: 12px 0 24px 0;
   text-align: left;
 }
 
-.modal__para{
+.modal__para {
   margin-bottom: 12px;
   line-height: 1.75;
   text-align: left;
 }
 
 .modal__title--contact,
-.modal__subtitle--contact{
+.modal__subtitle--contact {
   color: #fff;
 }
 
-.modal__languages{
+.modal__languages {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.modal__language{
+.modal__language {
   width: 25%;
   padding: 16px;
   position: relative;
@@ -434,7 +461,7 @@ nav {
   align-items: center;
 }
 
-.modal__language--img{
+.modal__language--img {
   width: 100%;
   transition: all 300ms ease;
 }
@@ -458,7 +485,7 @@ nav {
   transform: scale(0.9);
 }
 
-.form__item{
+.form__item {
   color: #fff;
   margin-bottom: 20px;
 }
@@ -480,13 +507,13 @@ nav {
   background-color: transparent;
 }
 
-.form__submit:active{
+.form__submit:active {
   border-color: #0b6f0b;
   color: #0b6f0b;
 }
 
 .modal__overlay--loading {
-  background-color: #242424;  
+  background-color: #242424;
   font-size: 80px;
   z-index: -1;
 }
@@ -502,7 +529,7 @@ nav {
   justify-content: center;
 }
 
-.modal__overlay--success{
+.modal__overlay--success {
   background-color: #4bb543;
   font-size: 40px;
   font-weight: 700;
@@ -512,8 +539,8 @@ nav {
 }
 
 .modal__overlay--visible {
-   z-index: 1;
-   display: flex;
+  z-index: 1;
+  display: flex;
 }
 
 .fa-spinner {
@@ -744,6 +771,24 @@ footer {
     left: 30px;
     padding-right: 30px;
   }
+
+  .modal {
+    top: 0;
+    left: 0;
+    transform: none;
+    height: auto;
+    width: 100%;
+    flex-direction: column-reverse;
+    border-radius: 0;
+  }
+
+  .modal__half {
+    width: 100%;
+  }
+
+  .shape {
+    opacity: 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -776,4 +821,111 @@ footer {
     text-align: center;
     margin: 12px 0;
   }
+}
+
+nav,
+.flex,
+#languages,
+#projects {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 600ms 800ms, visibility 600ms 800ms;
+}
+
+.modal__open nav,
+.modal__open .flex,
+.modal__open #languages,
+.modal__open #projects,
+.modal__open footer {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 400ms, visibility 400ms;
+}
+
+.modal__open #about {
+  height: 100vh;
+}
+
+/* 
+
+Shapes
+
+shapes on the first row
+height = 15vh
+
+shapes on the second row
+height = 50vh
+
+shapes on the third row
+height = 80vh
+
+shapes on first column
+width = 5vw
+
+shapes on second column
+width = 50vw
+
+shapes on third column
+width = 80vw
+
+
+*/
+
+.shape {
+  z-index: 0;
+  position: fixed;
+  transition: opacity 600ms 800ms, visibility 600ms 800ms;
+}
+
+.modal__open .shape {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 400ms, visibility 400ms;
+}
+
+.shape--0 {
+  top: 15vh;
+  left: 5vw;
+  width: 80px;
+}
+.shape--1 {
+  top: 15vh;
+  left: 50vw;
+  width: 80px;
+}
+.shape--2 {
+  top: 15vh;
+  left: 80vw;
+  width: 80px;
+}
+.shape--3 {
+  top: 50vh;
+  left: 5vw;
+  width: 80px;
+}
+.shape--4 {
+  top: 50vh;
+  left: 50vw;
+
+  width: 80px;
+}
+.shape--5 {
+  top: 50vh;
+  left: 80vw;
+  width: 80px;
+}
+.shape--6 {
+  top: 80vh;
+  left: 5vw;
+  width: 80px;
+}
+.shape--7 {
+  top: 80vh;
+  left: 50vw;
+  width: 80px;
+}
+.shape--8 {
+  top: 80vh;
+  left: 80vw;
+  width: 80px;
 }
