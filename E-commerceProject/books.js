@@ -1,5 +1,12 @@
 let books
 
+function openMenu() {
+  document.body.classList += " menu--open"
+}
+function closeMenu() {
+  document.body.classList.remove('menu--open')
+}
+
 async function renderBooks(filter) {
   const bookWrapper = document.querySelector(".books");
   bookWrapper.classList += ' books__loading'
@@ -46,8 +53,7 @@ async function renderBooks(filter) {
         return `<span class="book__price--normal">£${originalPrice.toFixed(2)}</span>£${salePrice.toFixed(2)}`
       
       console.log(originalPrice, salePrice)
-    }
-    
+    }    
 
   function ratingsHTML(rating) {
     let ratingHTML = "";
@@ -169,3 +175,5 @@ function getBooks() {
     }, 1000)
   })
 }
+
+

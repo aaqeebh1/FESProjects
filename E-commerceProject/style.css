@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -307,7 +311,8 @@ h2 {
   padding-top: 8vw;
 }
 
-.books {
+.books,
+.books__featured {
   display: flex;
   flex-wrap: wrap;
 }
