@@ -137,15 +137,19 @@ header{
 }
 
 .results__wrapper{
+    width: 100%;
     margin-top: 92px;
+    margin-right: auto;
+    margin-left: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    
 }
 
 .result__card{
-    width: calc(100%/3);
-    padding-left: 90px;
-    margin-bottom: 92px;
+    width: 300px;
+    margin: 46px 0;
+    overflow: hidden;
 }
+

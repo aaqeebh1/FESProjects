@@ -4,12 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anime World</title>
-    
-    <script
-      src="https://kit.fontawesome.com/c56b8b2b8b.js"
-      crossorigin="anonymous"
-    ></script>
+    <title>Anime World</title>    
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -30,15 +25,15 @@
           <div class="header__search">
             <h1 class="search__title">Browse Anime</h1>
             <div class="search-container">
-                <form class="no-submit">
-                  <input class="no-submit" id="search__input" type="search" placeholder="Search...">
+                <form class="no-submit" id="search__input">
+                  <input class="no-submit" id="search" name="search" type="search" placeholder="Search...">
               </div>
         </div>
       </div>
     </header>
     <section id="results">
-      <div class="container">
-        <div class="row">
+      <div class="container results__container">
+        <div class="row results__row">
           <div class="results__title--wrapper">
             <h3 class="results__title">Search results:</h3>
             <select name="filter" class="results__filter">
@@ -48,53 +43,15 @@
               <option value="MOST_POPULAR">Most Popular</option>
             </select>
           </div>
-          <div class="results__wrapper">
-            <div class="result__card">
-              <img src="" alt="" class="anime__img" />
-              <h5 class="anime__card--title">LOREM</h5>
-              <p class="anime__card--para">PARAGRAPH</p>
-              <h5 class="anime__card--realese-date">01/01/1991</h5>
-              <h5 class="anime__card--rating">4/5</h5>
-            </div>
-            <div class="result__card">
-              <img src="" alt="" class="anime__img" />
-              <h5 class="anime__card--title">LOREM</h5>
-              <p class="anime__card--para">PARAGRAPH</p>
-              <h5 class="anime__card--realese-date">01/01/1991</h5>
-              <h5 class="anime__card--rating">4/5</h5>
-            </div>
-            <div class="result__card">
-              <img src="" alt="" class="anime__img" />
-              <h5 class="anime__card--title">LOREM</h5>
-              <p class="anime__card--para">PARAGRAPH</p>
-              <h5 class="anime__card--realese-date">01/01/1991</h5>
-              <h5 class="anime__card--rating">4/5</h5>
-            </div>
-            <div class="result__card">
-              <img src="" alt="" class="anime__img" />
-              <h5 class="anime__card--title">LOREM</h5>
-              <p class="anime__card--para">PARAGRAPH</p>
-              <h5 class="anime__card--realese-date">01/01/1991</h5>
-              <h5 class="anime__card--rating">4/5</h5>
-            </div>
-            <div class="result__card">
-              <img src="" alt="" class="anime__img" />
-              <h5 class="anime__card--title">LOREM</h5>
-              <p class="anime__card--para">PARAGRAPH</p>
-              <h5 class="anime__card--realese-date">01/01/1991</h5>
-              <h5 class="anime__card--rating">4/5</h5>
-            </div>
-            <div class="result__card">
-              <img src="" alt="" class="anime__img" />
-              <h5 class="anime__card--title">LOREM</h5>
-              <p class="anime__card--para">PARAGRAPH</p>
-              <h5 class="anime__card--realese-date">01/01/1991</h5>
-              <h5 class="anime__card--rating">4/5</h5>
-            </div>
+          <div class="results__wrapper" id="search__results">            
           </div>
         </div>
       </div>
-    </section>
+    </section>    
+    <script
+      src="https://kit.fontawesome.com/c56b8b2b8b.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="./index.js"></script>
     <script src="./api.js"></script>
   </body>
