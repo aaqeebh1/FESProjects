@@ -2,22 +2,25 @@ const base_url = "https://api.jikan.moe/v4/anime";
 
 function searchAnime(event) {
   event.preventDefault();
-
   const form = new FormData(this);
   const query = form.get("search");
-
+  
+  const searchResultsTitle = document.getElementById("results__title--wrapper")
+  searchResultsTitle.classList += (' visible')
+  
   fetch(`${base_url}?q=${query}`)
     .then((res) => res.json())
     .then(updateDOM)
     .catch((err) => console.warn(err.message));
+
 }
 
 function updateDOM(data) {
   const searchResults = document.getElementById("search__results");
   searchResults.innerHTML = data.data
-  .map((anime) => {
-     if(anime.episodes === null){
-      return `
+    .map((anime) => {
+      if (anime.episodes === null) {
+        return `
         <div class="result__card">
         <a href="${anime.url}" class="anime__img" target="_blank">
           <img src="${anime.images.jpg.image_url}" alt="" class="anime__img" />
@@ -28,9 +31,12 @@ function updateDOM(data) {
           <p class="anime__card--realese"><span class="span-bold">Release Date:</span> ${anime.year}</p>          
           <p class="anime__card--rating"><span class="span-bold">Rating:</span> ${anime.rating}</p>
         </div>`;
-    }
-    else if (anime.type === 'TV' && anime.title === anime.title && anime.synopsis !== null) {
-    return `
+      } else if (
+        anime.type === "TV" &&
+        anime.title === anime.title &&
+        anime.synopsis !== null
+      ) {
+        return `
         <div class="result__card">
         <a href="${anime.url}" class="anime__img" target="_blank">
           <img src="${anime.images.jpg.image_url}" alt="" class="anime__img" />
@@ -40,12 +46,11 @@ function updateDOM(data) {
           <p class="anime__card--episodes"><span class="span-bold">Episodes:</span> ${anime.episodes}</p>          
           <p class="anime__card--realese"><span class="span-bold">Release Date:</span> ${anime.year}</p>          
           <p class="anime__card--rating"><span class="span-bold">Rating:</span> ${anime.rating}</p>
-        </div>`;}
-        
-  }).join("");
-
+        </div>`;
+      }
+    })
+    .join("");
 }
-
 
 function pageLoaded() {
   const form = document.getElementById("search__input");
