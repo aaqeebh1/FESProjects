@@ -1,55 +1,88 @@
 const base_url = "https://api.jikan.moe/v4/anime";
+const loadingBar = document.querySelector("#loading__bar--base");
+const loadingSpinner = document.querySelector("#results__loading--wrapper");
 
 function searchAnime(event) {
   event.preventDefault();
   const form = new FormData(this);
   const query = form.get("search");
-  
-  const searchResultsTitle = document.getElementById("results__title--wrapper")
-  searchResultsTitle.classList += (' visible')
-  
+
   fetch(`${base_url}?q=${query}`)
     .then((res) => res.json())
     .then(updateDOM)
     .catch((err) => console.warn(err.message));
+}
 
+function loadingDOM() {
+  loadingBar.classList += " visible";
+  loadingSpinner.classList += " visible";
+}
+
+function removeloadingDOM() {
+  loadingBar.classList.remove("visible");
+  loadingSpinner.classList.remove("visible");
 }
 
 function updateDOM(data) {
-  const searchResults = document.getElementById("search__results");
-  searchResults.innerHTML = data.data
-    .map((anime) => {
-      if (anime.episodes === null) {
-        return `
-        <div class="result__card">
-        <a href="${anime.url}" class="anime__img" target="_blank">
-          <img src="${anime.images.jpg.image_url}" alt="" class="anime__img" />
-          </a>
-          <h5 class="anime__card--title">${anime.title}</h5>
-          <p class="anime__card--para">${anime.synopsis.slice(0, 150)}</p>
-          <p class="anime__card--episodes"><span class="span-bold">Episodes:</span> Ongoing</p>          
-          <p class="anime__card--realese"><span class="span-bold">Release Date:</span> ${anime.year}</p>          
-          <p class="anime__card--rating"><span class="span-bold">Rating:</span> ${anime.rating}</p>
-        </div>`;
-      } else if (
-        anime.type === "TV" &&
-        anime.title === anime.title &&
-        anime.synopsis !== null
-      ) {
-        return `
-        <div class="result__card">
-        <a href="${anime.url}" class="anime__img" target="_blank">
-          <img src="${anime.images.jpg.image_url}" alt="" class="anime__img" />
-          </a>
-          <h5 class="anime__card--title">${anime.title}</h5>
-          <p class="anime__card--para">${anime.synopsis.slice(0, 150)}</p>
-          <p class="anime__card--episodes"><span class="span-bold">Episodes:</span> ${anime.episodes}</p>          
-          <p class="anime__card--realese"><span class="span-bold">Release Date:</span> ${anime.year}</p>          
-          <p class="anime__card--rating"><span class="span-bold">Rating:</span> ${anime.rating}</p>
-        </div>`;
-      }
-    })
-    .join("");
+  loadingDOM();
+
+  setTimeout(function () {
+    removeloadingDOM();
+
+    const searchResultsTitle = document.getElementById(
+      "results__title--wrapper"
+    );
+    searchResultsTitle.classList += " visible";
+
+    const searchResults = document.getElementById("search__results");
+    searchResults.innerHTML = data.data
+      .map((anime) => {
+        if (anime.episodes === null) {
+          return `
+          <div class="result__card">
+          <a href="${anime.url}" class="anime__img" target="_blank">
+            <img src="${
+              anime.images.jpg.image_url
+            }" alt="" class="anime__img" />
+            </a>
+            <h5 class="anime__card--title">${anime.title}</h5>
+            <p class="anime__card--para">${anime.synopsis.slice(0, 150)}</p>
+            <p class="anime__card--episodes"><span class="span-bold">Episodes:</span> Ongoing</p>          
+            <p class="anime__card--realese"><span class="span-bold">Release Date:</span> ${
+              anime.year
+            }</p>          
+            <p class="anime__card--rating"><span class="span-bold">Rating:</span> ${
+              anime.rating
+            }</p>
+          </div>`;
+        } else if (
+          anime.type === "TV" &&
+          anime.title === anime.title &&
+          anime.synopsis !== null
+        ) {
+          return `
+          <div class="result__card">
+          <a href="${anime.url}" class="anime__img" target="_blank">
+            <img src="${
+              anime.images.jpg.image_url
+            }" alt="" class="anime__img" />
+            </a>
+            <h5 class="anime__card--title">${anime.title}</h5>
+            <p class="anime__card--para">${anime.synopsis.slice(0, 150)}</p>
+            <p class="anime__card--episodes"><span class="span-bold">Episodes:</span> ${
+              anime.episodes
+            }</p>          
+            <p class="anime__card--realese"><span class="span-bold">Release Date:</span> ${
+              anime.year
+            }</p>          
+            <p class="anime__card--rating"><span class="span-bold">Rating:</span> ${
+              anime.rating
+            }</p>
+          </div>`;
+        }
+      })
+      .join("");
+  }, 2000);
 }
 
 function pageLoaded() {
