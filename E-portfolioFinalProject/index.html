@@ -15,17 +15,23 @@
     <header>
       <div class="container">
         <div class="row">
-          <nav class="nav__bar">
+          <nav class="navbar">
             <div class="nav__logo">
               <img src="./assets/pngegg.png" class="nav__logo--img" />
               <h3 class="nav__title">AnimeWorld</h3>
             </div>
+            <a href="#" class="toggle__btn">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </a>
             <div class="nav__links">
-              <a href="" class="nav__link">Home</a>
-              <a href="" class="nav__link" id="latest">Latest</a>
-              <a href="" class="nav__link" id="top__anime">Top Anime</a>
-              <a href="" class="nav__link" id="most__popular">Most Popular</a>
+              <a href="" class="nav__link" onclick="hideMenu()">Home</a>
+              <a href="" class="nav__link" id="latest" onclick="hideMenu()">Latest</a>
+              <a href="" class="nav__link" id="top__anime" onclick="hideMenu()">Top Anime</a>
+              <a href="" class="nav__link" id="most__popular" onclick="hideMenu()">Most Popular</a>
             </div>
+
           </nav>
           <div class="header__search">
             <h1 class="search__title">Browse Anime</h1>

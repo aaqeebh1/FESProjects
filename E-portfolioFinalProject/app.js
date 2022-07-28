@@ -5,13 +5,40 @@ const topAnime = document.querySelector("#top__anime");
 const mostPopularAnime = document.querySelector("#most__popular");
 const animeDropdown = document.querySelector("#results__filter");
 const latestAnime = document.querySelector("#latest");
+const searchBar = document.querySelector(".header__search")
+
+
+const toggleButton = document.querySelector(".toggle__btn")
+const navLinks = document.querySelector(".nav__links")
+
+const navLink = document.querySelector(".nav__link")
+
+
+
+toggleButton.addEventListener('click', () => {
+  navLinks.classList.toggle("active")
+
+  if(navLinks.classList.contains("active")) {
+    searchBar.style.opacity = "0"
+  }else if (!navLinks.classList.contains("active")){
+    searchBar.style.opacity = "1"
+  }
+
+})
+
+const hideMenu = () => {
+  if (navLinks.classList.contains("active"))
+ {
+  navLinks.classList.remove("active")
+  searchBar.style.opacity = "1"
+ }}
 
 function searchAnime(event) {
   event.preventDefault();
   const form = new FormData(this);
   const query = form.get("search");
 
-  fetch(`${base_url}/anime?q=${query}`)
+  fetch(`${base_url}/anime?q=${query}&type=TV`)
     .then((res) => res.json())
     .then(updateDOM)
     .catch((err) => console.warn(err.message));
@@ -41,7 +68,7 @@ const updateDOM = (data) => {
     titleVisibilty();
 
     const searchResults = document.getElementById("search__results");
-    searchResults.innerHTML = data.data
+    searchResults.innerHTML = data.data.slice(0, 9)
       .map((anime) => {
         if (anime.episodes === null) {
           return `
@@ -63,7 +90,6 @@ const updateDOM = (data) => {
             </a>
           </div>`;
         } else if (
-          anime.type === "TV" &&
           anime.title === anime.title &&
           anime.synopsis !== null
         ) {
@@ -126,7 +152,6 @@ const topSixDOM = (data) => {
             </a>
           </div>`;
         } else if (
-          anime.type === "TV" &&
           anime.title === anime.title &&
           anime.synopsis !== null
         ) {
