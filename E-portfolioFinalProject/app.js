@@ -13,15 +13,13 @@ const navLinks = document.querySelector(".nav__links")
 
 const navLink = document.querySelector(".nav__link")
 
-
-
 toggleButton.addEventListener('click', () => {
   navLinks.classList.toggle("active")
 
   if(navLinks.classList.contains("active")) {
     searchBar.style.opacity = "0"
   }else if (!navLinks.classList.contains("active")){
-    searchBar.style.opacity = "1"
+    hideMenu()
   }
 
 })
