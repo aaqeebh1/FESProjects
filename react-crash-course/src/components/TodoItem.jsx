@@ -1,22 +1,29 @@
 import "./../App.css";
 
-
-
-
 function TodoItem(props) {
-    
+  const completedStyle = {
+    fontStyle: "italic",
+    color: "green",
+    textDecoration: "line-through",
+  };
+
   return (
-      <div className="todo__item">
-      <input 
-       type="checkbox"
-       id="learn"
-       name="learn"
-       onChange={() => props.handleChange(props.item.id)}></input>
-      <label for="learn">{props.item.text}</label>
+    <div className="todo__item">
+      <input
+        type="checkbox"
+        id="todoItem"
+        name="todoItem"
+        checked= {props.item.completed}
+        onChange={() => {
+          props.handleChange(props.item.id);
+        }}
+      ></input>
+      <p style={props.item.completed ? completedStyle : null}>
+        {props.item.text}
+      </p>
       <br></br>
-      </div>
+    </div>
   );
 }
 
-
-export default TodoItem
+export default TodoItem;
