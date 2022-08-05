@@ -1,33 +1,37 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 
 
 
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super()
     this.state = {
-      count: 0
-    }
-    this.handleClick = this.handleClick.bind(this)
+      isLoggedIn: false
+     }
+     this.handleClick = this.handleClick.bind(this)
   }
-
+  handleClick() {
+    this.setState(prevState => {
+      return {
+        isLoggedIn: !prevState.isLoggedIn
+      }
+    })
+    
+  }
   
 
-  handleClick(){
-    this.setState((prevState) =>  {return {count: prevState.count +1}} 
-    )
-  }
-
   render() {
+    let btnText = this.state.isLoggedIn ? "LOG OUT" : "LOGIN";
+    let displayText = this.state.isLoggedIn ? "LOGGED OUT" : "LOGGED IN";
     return (
       <div>
-        <h1>{this.state.count}</h1>
-        <button onClick={this.handleClick}>Change!</button>
+      <h1>You are {displayText}!!</h1>
+      <button id='click' onClick={this.handleClick}>{btnText}</button>
       </div>
-    );
+      )
   }
 }
 
