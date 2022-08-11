@@ -8,11 +8,19 @@ import Nav from "./components/Nav";
 // import Footer from "./components/Footer";
 // import Cart from "./pages/Cart";
 import { counter } from "@fortawesome/fontawesome-svg-core";
+import Landing from "./components/Landing";
+import Highlights from "./components/Highlights";
+import Featured from "./components/Featured";
+import Discounted from "./ui/Discounted";
 
 function App() { 
   return (
     <div className="App">
       <Nav />
+      <Landing />
+      <Highlights />
+      <Featured />
+      <Discounted />
     </div>
   )
 }
