@@ -1,28 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Home from "./pages/Home";
-// import Books from "./pages/Books";
-// import BookInfo from "./pages/BookInfo";
-// import { books } from "./data";
+import Books from "./pages/Books";
+import { books } from "./data";
 import Nav from "./components/Nav";
-// import Footer from "./components/Footer";
-// import Cart from "./pages/Cart";
-import { counter } from "@fortawesome/fontawesome-svg-core";
-import Landing from "./components/Landing";
-import Highlights from "./components/Highlights";
-import Featured from "./components/Featured";
-import Discounted from "./ui/Discounted";
+import Home from "./pages/Home";
+import Footer from "./components/Footer";
+import BooksInfo from "./pages/BooksInfo";
 
-function App() { 
+function App() {
   return (
-    <div className="App">
-      <Nav />
-      <Landing />
-      <Highlights />
-      <Featured />
-      <Discounted />
-    </div>
-  )
+    <Router>
+      <div className="App">
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/books" exact element={<Books books={books} />} />
+          <Route path="books/1" element={<BooksInfo books={books} />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
 export default App;
