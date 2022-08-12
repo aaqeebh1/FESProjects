@@ -17,7 +17,7 @@ const Nav = () => {
           <img src={LibraryLogo} alt="" className="logo" /></Link> 
           <ul className="nav__links">
             <li className="nav__list">
-              <Link to="" className="nav__link">
+              <Link to="/" className="nav__link">
                 Home
               </Link>
             </li>
@@ -30,7 +30,7 @@ const Nav = () => {
               <FontAwesomeIcon icon='bars' />
               </button> 
               <li className="nav__icon">
-                <Link to="/" className="nav__link">
+                <Link to="/cart" className="nav__link">
                   <FontAwesomeIcon icon="shopping-cart"/>
                 </Link>
                 <span className="cart__length">2</span>
@@ -42,17 +42,17 @@ const Nav = () => {
             </button>
             <ul className="menu__links">
               <li className="menu__list">
-                <Link to="/" className="menu__link">
+                <Link to="/" className="menu__link" onClick={closeMenu}>
                   Home
                 </Link>
               </li>
               <li className="menu__list">
-                <Link to="/" className="menu__link">
+                <Link to="/books" className="menu__link" onClick={closeMenu}>
                   Books
                 </Link>
               </li>
               <li className="menu__list">
-                <Link to="/" className="menu__link">
+                <Link to="/cart" className="menu__link" onClick={closeMenu}>
                   Cart
                 </Link>
               </li>
