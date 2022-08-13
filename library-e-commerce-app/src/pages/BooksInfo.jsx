@@ -1,13 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Book from "../ui/book";
 import Price from "../ui/Price";
 import Rating from "../ui/rating";
 
-const BooksInfo = ({ books }) => {
+const BooksInfo = ({ books, addToCart, cart }) => {
   const { id } = useParams();
   const book = books.find((book) => +book.id === +id);
+
+  function addBookToCart(book) {
+    addToCart(book);
+  }
+
+  function bookInCart() {
+    return cart.find((book) => book.id === +id);
+  }
+
   return (
     <div id="books__body">
       <main className="books__main">
@@ -34,26 +43,39 @@ const BooksInfo = ({ books }) => {
                     salePrice={book.salePrice}
                   />
                 </div>
-                <h3 className="book__summary--title">Summary</h3>
-                <p className="book__summary--para">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                  saepe tempora perspiciatis quos voluptatum dignissimos ducimus
-                  dicta nesciunt? At aliquid doloribus eveniet perspiciatis
-                  beatae recusandae, amet temporibus iure quas animi!
-                </p>
-                <p className="book__summary--para">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                  saepe tempora perspiciatis quos voluptatum dignissimos ducimus
-                  dicta nesciunt? At aliquid doloribus eveniet perspiciatis
-                  beatae recusandae, amet temporibus iure quas animi!
-                </p>
-                <p className="book__summary--para">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                  saepe tempora perspiciatis quos voluptatum dignissimos ducimus
-                  dicta nesciunt? At aliquid doloribus eveniet perspiciatis
-                  beatae recusandae, amet temporibus iure quas animi!
-                </p>
-                <button className="btn">Add to cart</button>
+                <div className="book__summary">
+                  <h3 className="book__summary--title">Summary</h3>
+                  <p className="book__summary--para">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                    saepe tempora perspiciatis quos voluptatum dignissimos
+                    ducimus dicta nesciunt? At aliquid doloribus eveniet
+                    perspiciatis beatae recusandae, amet temporibus iure quas
+                    animi!
+                  </p>
+                  <p className="book__summary--para">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                    saepe tempora perspiciatis quos voluptatum dignissimos
+                    ducimus dicta nesciunt? At aliquid doloribus eveniet
+                    perspiciatis beatae recusandae, amet temporibus iure quas
+                    animi!
+                  </p>
+                  <p className="book__summary--para">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                    saepe tempora perspiciatis quos voluptatum dignissimos
+                    ducimus dicta nesciunt? At aliquid doloribus eveniet
+                    perspiciatis beatae recusandae, amet temporibus iure quas
+                    animi!
+                  </p>
+                </div>
+                {bookInCart() ? (
+                  <Link to="/cart">
+                    <button className="btn">Checkout</button>
+                  </Link>
+                ) : (
+                  <button className="btn" onClick={() => addBookToCart(book)}>
+                    Add to cart
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -69,7 +91,7 @@ const BooksInfo = ({ books }) => {
                 .filter((book) => book.rating === 5 && +book.id !== +id)
                 .slice(0, 4)
                 .map((book) => (
-                  <Book book={book} key={book.id} />
+                  <Book book={book} key={book.id}/>
                 ))}
             </div>
           </div>

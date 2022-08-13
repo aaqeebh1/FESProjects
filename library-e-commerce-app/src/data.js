@@ -45,7 +45,7 @@ export const books = [
     title: "Sell Or Be Sold",
     url: "https://covers.openlibrary.org/b/id/7737110-L.jpg",
     originalPrice: 70,
-    salePrice: 12.5,
+    salePrice: 12.50,
     rating: 5,
   },
   {
